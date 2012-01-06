@@ -1,0 +1,50 @@
+<html>
+<head>
+<script type="text/javascript" src="js/nib.js"></script>
+<script type="text/javascript" src="js/nif.js"></script>
+
+<script type="text/javascript">
+
+function generate(start_input, result_element, generate_function) {
+    var result = generate_function(start_input.value);
+    var new_nif_element = document.getElementById("newnif");
+    result_element.innerHTML = result;
+    if(result == start_input.value) {
+      result_element.style.color='green'
+    } else {
+      result_element.style.color='black'
+    };
+  
+}
+
+function generate_nif() {
+  generate(document.getElementById("start_nif"), document.getElementById("newnif"), NIF.generate);
+}
+
+function generate_nib() {
+  generate(document.getElementById("start_nib"), document.getElementById("newnib"), NIB.generate);
+}
+</script>
+
+</head>
+<body>
+<div>
+  <h1>Gerador / Validador</h1>
+<h2>NIF</h2>
+<form>
+  <input type="text" name="start" id="start_nif" value="2">
+  <input type="button" name="generate" value="generate" onclick="generate_nif()">
+  <div style="display: inline-block;" id="newnif"></div>
+
+</form>
+</div>
+<div>
+<h2>NIB</h2>
+<form>
+  <input type="text" name="start" id="start_nib" value="0035">
+  <input type="button" name="generate" value="generate" onclick="generate_nib()">
+  <div style="display: inline-block;" id="newnib"></div>
+</form>
+</div>
+</body>
+</html>
